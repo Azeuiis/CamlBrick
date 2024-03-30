@@ -289,17 +289,16 @@ let make_paddle() : t_paddle =
    @param size taille de la balle
    @return une balle
  *)
-(* les valeurs de ball_velocity, ball_modifier et ball_size sont mis au hasard on les changeras après*)
+(* les valeurs de ball_velocity et ball_modifier sont mis au hasard on les changeras après*)
 let make_ball(x,y, size : int * int * int) : t_ball =
   (* Itération 3 *)
   {
-    ball_position = ref(make_vec2(10,10));
+    ball_position = ref(make_vec2(x,y));
     ball_velocity = ref {x=2;y=2};
     ball_color = GRAY;
     ball_modifier = ref 5;
-    ball_size = ref 10
+    ball_size = ref size
   }
-    
 ;;
 
 (**
@@ -719,7 +718,7 @@ let make_camlbrick() : t_camlbrick =
   (* Itération 1, 2, 3 et 4 *)
   let param =make_camlbrick_param() in
   let res : t_camlbrick ={brick_grid=Array.make_matrix (param.world_width/param.brick_width ) (param.world_bricks_height/param.brick_height) BK_simple ;
-                          paddle = make_paddle() ; ball =ref [make_ball(15,15,15)]; gameState = ref PLAYING; gameSpeed = ref 0 ;  
+                          paddle = make_paddle() ; ball =ref [make_ball(15,15,10)]; gameState = ref PLAYING; gameSpeed = ref 0 ;  
                           }  in 
   for j=0 to  param.world_bricks_height/param.brick_height-1 do
     for i=0 to  param.world_width/param.brick_width-1 do
@@ -774,7 +773,7 @@ let stop_onclick(game : t_camlbrick) : unit =
   d'interagir avec le joueur.
 *)
 let speed_get(game : t_camlbrick) : int = 
-  0
+  !(game.gameSpeed)
 ;;
 
 
