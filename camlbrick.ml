@@ -205,19 +205,23 @@ let vec2_mult_scalar(a,x,y : t_vec2 * int * int) : t_vec2 =
 
 
 (* Itération 2 *)
-type t_ball = {ball_position : t_vec2 ref ; (** position modifiable en (x,y) de la balle *)
-               ball_velocity : t_vec2 ref ; (** vitesse modifiable de la balle en vecteur *)
-               ball_color : t_camlbrick_color; (** couleur de la balle*)
-               ball_modifier : int ref; (** scalaire de modification de la vitesse de la bille *)
-               ball_size : int ref};;(* rayon de la bille *)
+type t_ball = {
+  ball_position : t_vec2 ref ; (** position modifiable en (x,y) de la balle *)
+  ball_velocity : t_vec2 ref ; (** vitesse modifiable de la balle en vecteur *)
+  ball_color : t_camlbrick_color; (** couleur de la balle*)
+  ball_modifier : int ref; (** scalaire de modification de la vitesse de la bille *)
+  ball_size : int ref; (* rayon de la bille *)
+}
+;;
 
 (* Itération 2 *)
-type t_paddle = {paddle_speed : int ref; (** vitesse du paddle*)
-                 paddle_height : int; (** hauteur du paddle*)
-                 paddle_width:int ref; (** largeur du paddle*)
-                 paddle_position:t_vec2 ref;(** position modifiable du paddle en vecteur*)
-                 color : t_camlbrick_color (** couleur du paddle*)
-                }
+type t_paddle = {
+  paddle_speed : int ref; (** vitesse du paddle*)
+  paddle_height : int; (** hauteur du paddle*)
+  paddle_width:int ref; (** largeur du paddle*)
+  paddle_position:t_vec2 ref;(** position modifiable du paddle en vecteur*)
+  color : t_camlbrick_color; (** couleur du paddle*)
+}
 ;;
 
 (* Itération 1, 2, 3 et 4 *)
@@ -333,8 +337,6 @@ let brick_get(game, i, j : t_camlbrick * int * int)  : t_brick_kind =
   (* Itération 1 *)
   (game.brick_grid).(i).(j)
 ;;
-
-
 
 (**renvoie en quoi ce transforme une brique une fois touché
     @author Olivier Lemaire
@@ -454,7 +456,6 @@ let balls_count(game : t_camlbrick) : int =
   List.length(!(game.ball))
 ;;
  
-
 (**
     Fonction qui recupere toutes les balles d'une partie
     @author Kamardine
@@ -465,7 +466,6 @@ let balls_get(game : t_camlbrick) : t_ball list =
   (* Itération 2 *)
   !(game.ball)
 ;;
- 
 
 (**
     Fonction qui recupere la ieme balle d'une partie
@@ -532,12 +532,10 @@ let ball_modif_speed(game, ball, dv : t_camlbrick * t_ball * t_vec2) : unit =
   ()
 ;;
 
-
 let ball_modif_speed_sign(game, ball, sv : t_camlbrick * t_ball * t_vec2) : unit =
   (* Itération 3 *)
   ()
 ;;
-
 
 (**
   Fonction qui détecte si un point (x,y) se trouve à l'intérieur d'un cercle
@@ -552,7 +550,6 @@ let ball_modif_speed_sign(game, ball, sv : t_camlbrick * t_ball * t_vec2) : unit
 let is_inside_circle(cx,cy,rad, x, y : int * int * int * int * int) : bool =
   (* Itération 3 *)
 (((x-cx)*(x-cx)) + ((y-cy)*(y-cy))) < (rad * rad);;
-
 
 (**
   Fonction qui détecte si un point (x,y) se trouve à l'intérieur d'un rectangle formé
@@ -570,8 +567,6 @@ let is_inside_quad(x1,y1,x2,y2, x,y : int * int * int * int * int * int) : bool 
   (x >= x1 && x<= x2) && (y >= y1 && y <= y2)
 ;;
 
-
-
 let ball_remove_out_of_border(game,balls : t_camlbrick * t_ball list ) : t_ball list = 
   (* Itération 3 *)
   balls
@@ -581,7 +576,6 @@ let ball_hit_paddle(game,ball,paddle : t_camlbrick * t_ball * t_paddle) : unit =
   (* Itération 3 *)
   ()
 ;;
-
 
 (* lire l'énoncé choix à faire *)
 let ball_hit_corner_brick(game,ball, i,j : t_camlbrick * t_ball * int * int) : bool =
@@ -641,7 +635,6 @@ let canvas_mouse_click_press(game,button,x,y : t_camlbrick * int * int * int) : 
 let canvas_mouse_click_release(game,button,x,y : t_camlbrick * int * int * int) : unit =
   ()
 ;;
-
 
 
 (**
