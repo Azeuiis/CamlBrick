@@ -1,0 +1,1420 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="doc_utilities/style.css" type="text/css">
+<meta content="text/html; charset=utf8" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="Start" href="doc_utilities/index.html">
+<link rel="Up" href="doc_utilities/index.html">
+<link title="Index of types" rel=Appendix href="doc_utilities/index_types.html">
+<link title="Index of values" rel=Appendix href="doc_utilities/index_values.html">
+<link title="Index of modules" rel=Appendix href="doc_utilities/index_modules.html">
+<link title="Camlbrick" rel="Chapter" href="Camlbrick.html"><title>Camlbrick</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a class="up" href="doc_utilities/index.html" title="Index">Up</a>
+&nbsp;</div>
+<h1>Module <a href="doc_utilities/type_Camlbrick.html">Camlbrick</a></h1>
+
+<pre><span id="MODULECamlbrick"><span class="keyword">module</span> Camlbrick</span>: <code class="code">sig</code> <a href="Camlbric.html">..</a> <code class="code">end</code></pre><div class="info module top">
+<div class="info-desc">
+<p>Ce module Camlbrick représente le noyau fonctionnel du jeu de casse-brique nommé <b>camlbrick</b>
+(un jeu de mot entre le jeu casse-brique et le mot ocaml).</p>
+
+<p>Le noyau fonctionnel consiste à réaliser l'ensemble des structures et autres fonctions capables
+d'être utilisées par une interface graphique. Par conséquent, dans ce module il n'y a aucun
+aspect visuel! Vous pouvez utiliser le mode console.</p>
+
+<p>Le principe du jeu de casse-brique consiste à faire disparaître toutes les briques d'un niveau
+en utilisant les rebonds d'une balle depuis une raquette contrôlée par l'utilisateur.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Antoine GOY, Olivier LEMAIRE, Nicolas ITEY, Kamardine MIRGHANE MOHAMED</li>
+<li><b>Version:</b> 1</li>
+</ul>
+</div>
+<hr width="100%">
+
+<pre><span id="VALframes"><span class="keyword">val</span> frames</span> : <code class="type">int ref</code></pre><div class="info ">
+<div class="info-desc">
+<p>Compteur utilisé en interne pour afficher le numéro de la frame du jeu vidéo. 
+Vous pouvez utiliser cette variable en lecture, mais nous ne devez pas modifier
+sa valeur!</p>
+</div>
+</div>
+
+<pre><code><span id="TYPEt_camlbrick_color"><span class="keyword">type</span> <code class="type"></code>t_camlbrick_color</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_camlbrick_color.WHITE"><span class="constructor">WHITE</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_camlbrick_color.BLACK"><span class="constructor">BLACK</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_camlbrick_color.GRAY"><span class="constructor">GRAY</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_camlbrick_color.LIGHTGRAY"><span class="constructor">LIGHTGRAY</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_camlbrick_color.DARKGRAY"><span class="constructor">DARKGRAY</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_camlbrick_color.BLUE"><span class="constructor">BLUE</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_camlbrick_color.RED"><span class="constructor">RED</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_camlbrick_color.GREEN"><span class="constructor">GREEN</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_camlbrick_color.YELLOW"><span class="constructor">YELLOW</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_camlbrick_color.CYAN"><span class="constructor">CYAN</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_camlbrick_color.MAGENTA"><span class="constructor">MAGENTA</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_camlbrick_color.ORANGE"><span class="constructor">ORANGE</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_camlbrick_color.LIME"><span class="constructor">LIME</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_camlbrick_color.PURPLE"><span class="constructor">PURPLE</span></span></code></td>
+
+</tr></table>
+
+<div class="info ">
+<div class="info-deprecated">
+<span class="warning">Deprecated. </span>Ne pas modifier ce type!</div>
+<div class="info-desc">
+<p>type énuméré représentant les couleurs gérables par notre moteur de jeu. Vous ne pouvez pas modifier ce type!</p>
+</div>
+</div>
+
+
+<pre><code><span id="TYPEt_camlbrick_param"><span class="keyword">type</span> <code class="type"></code>t_camlbrick_param</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_camlbrick_param.world_width">world_width</span>&nbsp;: <code class="type">int</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<div class="info-desc">
+<p>largeur de la zone de dessin des briques</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_camlbrick_param.world_bricks_height">world_bricks_height</span>&nbsp;: <code class="type">int</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<div class="info-desc">
+<p>hauteur de la zone de dessin des briques</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_camlbrick_param.world_empty_height">world_empty_height</span>&nbsp;: <code class="type">int</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<div class="info-desc">
+<p>hauteur de la zone vide pour que la balle puisse évoluer un petit peu</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_camlbrick_param.brick_width">brick_width</span>&nbsp;: <code class="type">int</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<div class="info-desc">
+<p>largeur d'une brique</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_camlbrick_param.brick_height">brick_height</span>&nbsp;: <code class="type">int</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<div class="info-desc">
+<p>hauteur d'une brique</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_camlbrick_param.paddle_init_width">paddle_init_width</span>&nbsp;: <code class="type">int</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<div class="info-desc">
+<p>largeur initiale de la raquette</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_camlbrick_param.paddle_init_height">paddle_init_height</span>&nbsp;: <code class="type">int</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<div class="info-desc">
+<p>hauteur initiale de la raquette</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_camlbrick_param.time_speed">time_speed</span>&nbsp;: <code class="type">int Stdlib.ref</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<div class="info-desc">
+<p>indique l'écoulement du temps en millisecondes (c'est une durée approximative)</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr></table>
+<code>}</code>
+
+<div class="info ">
+<div class="info-desc">
+<p>Cette structure regroupe tous les attributs globaux,
+  pour paramétrer notre jeu vidéo.
+  <b>Attention:</b> Il doit y avoir des cohérences entre les différents paramètres:</p>
+<ul>
+<li> la hauteur totale de la fenêtre est égale à la somme des hauteurs de la zone de briques du monde et
+  de la hauteur de la zone libre.</li>
+<li>la hauteur de la zone des briques du monde est un multiple de la hauteur d'une seule brique. </li>
+<li>la largeur du monde est un multiple de la largeur d'une seule brique. </li>
+<li>initialement la largeur de la raquette doit correspondre à la taille moyenne.</li>
+<li>la hauteur initiale de la raquette doit être raisonnable et ne pas toucher un bord de la fenêtre.</li>
+<li>La variable time_speed doit être strictement positive. Et représente l'écoulement du temps.</li>
+</ul>
+</div>
+</div>
+
+
+<pre><code><span id="TYPEt_brick_kind"><span class="keyword">type</span> <code class="type"></code>t_brick_kind</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_brick_kind.BK_empty"><span class="constructor">BK_empty</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_brick_kind.BK_simple"><span class="constructor">BK_simple</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_brick_kind.BK_double"><span class="constructor">BK_double</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_brick_kind.BK_block"><span class="constructor">BK_block</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_brick_kind.BK_bonus"><span class="constructor">BK_bonus</span></span></code></td>
+
+</tr></table>
+
+<div class="info ">
+<div class="info-desc">
+<p>Enumeration des différents types de briques. 
+  Vous ne devez pas modifier ce type.</p>
+</div>
+</div>
+
+
+<pre><span id="VALmake_empty_brick"><span class="keyword">val</span> make_empty_brick</span> : <code class="type">unit -&gt; t_brick_kind</code></pre><div class="info ">
+<div class="info-deprecated">
+<span class="warning">Deprecated. </span>Cette fonction est utilisé en interne.</div>
+<div class="info-desc">
+<p>Cette fonction renvoie le type de brique pour représenter les briques de vide.
+  C'est à dire, l'information qui encode l'absence de brique à un emplacement sur la grille du monde.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Returns</b> Renvoie le type correspondant à la notion de vide.</li>
+</ul>
+</div>
+
+<pre><code><span id="TYPEt_ball_size"><span class="keyword">type</span> <code class="type"></code>t_ball_size</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_ball_size.BS_SMALL"><span class="constructor">BS_SMALL</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_ball_size.BS_MEDIUM"><span class="constructor">BS_MEDIUM</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_ball_size.BS_BIG"><span class="constructor">BS_BIG</span></span></code></td>
+
+</tr></table>
+
+<div class="info ">
+<div class="info-desc">
+<p>Enumeration des différentes tailles des balles. 
+    La taille  normale d'une balle est <code class="code">BS_MEDIUM</code>.</p>
+
+<p>Vous pouvez ajouter d'autres valeurs sans modifier les valeurs existantes.</p>
+</div>
+</div>
+
+
+<pre><code><span id="TYPEt_paddle_size"><span class="keyword">type</span> <code class="type"></code>t_paddle_size</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_paddle_size.PS_SMALL"><span class="constructor">PS_SMALL</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_paddle_size.PS_MEDIUM"><span class="constructor">PS_MEDIUM</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_paddle_size.PS_BIG"><span class="constructor">PS_BIG</span></span></code></td>
+
+</tr></table>
+
+<div class="info ">
+<div class="info-desc">
+<p>Enumeration des différentes taille de la raquette. Par défaut, une raquette doit avoir la taille
+<code class="code">PS_SMALL</code>.</p>
+
+<p>Vous pouvez ajouter d'autres valeurs sans modifier les valeurs existantes.</p>
+</div>
+</div>
+
+
+<pre><code><span id="TYPEt_gamestate"><span class="keyword">type</span> <code class="type"></code>t_gamestate</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_gamestate.GAMEOVER"><span class="constructor">GAMEOVER</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_gamestate.PLAYING"><span class="constructor">PLAYING</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_gamestate.PAUSING"><span class="constructor">PAUSING</span></span></code></td>
+
+</tr></table>
+
+<div class="info ">
+<div class="info-desc">
+<p>Enumération des différents états du jeu. Nous avons les trois états de base:</p>
+<ul>
+<li><code class="code">GAMEOVER</code>: qui indique si une partie est finie typiquement lors du lancement du jeu</li>
+<li><code class="code">PLAYING</code>: qui indique qu'une partie est en cours d'exécution</li>
+<li><code class="code">PAUSING</code>: indique qu'une partie en cours d'exécution est actuellement en pause</li>
+</ul>
+
+<p>Dans le cadre des extensions, vous pouvez modifier ce type pour adopter d'autres états du jeu selon
+    votre besoin.</p>
+</div>
+</div>
+
+
+<pre><code><span id="TYPEt_vec2"><span class="keyword">type</span> <code class="type"></code>t_vec2</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_vec2.x">x</span>&nbsp;: <code class="type">int</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_vec2.y">y</span>&nbsp;: <code class="type">int</code>;</code></td>
+
+</tr></table>
+<code>}</code>
+
+<div class="info ">
+<div class="info-desc">
+<p>Vecteur avec position x et y</p>
+</div>
+</div>
+
+
+<pre><span id="VALmake_vec2"><span class="keyword">val</span> make_vec2</span> : <code class="type">int * int -&gt; t_vec2</code></pre><div class="info ">
+<div class="info-desc">
+<p>Cette fonction permet de créer un vecteur 2D à partir de deux entiers.
+  Les entiers représentent la composante en X et en Y du vecteur.</p>
+
+<p>Vous devez modifier cette fonction.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Nicolas Itey, Olivier Lemaire</li>
+<li><b>Returns</b> Renvoie le vecteur dont les composantes sont (x,y).</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(x,y)</code> : <div class="parameter-desc">
+<code>y</code> : seconde composante du vecteur</div>
+<div class="parameter-desc">
+<code>x</code> : première composante du vecteur</div>
+</div>
+
+<pre><span id="VALvec2_add"><span class="keyword">val</span> vec2_add</span> : <code class="type"><a href="Camlbrick.html#TYPEt_vec2">t_vec2</a> * <a href="Camlbric.html#TYPEt_vec2">t_vec2</a> -&gt; t_vec2</code></pre><div class="info ">
+<div class="info-desc">
+<p>Cette fonction renvoie un vecteur qui est la somme des deux vecteurs donnés en arguments.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Nicolas Itey, Olivier Lemaire</li>
+<li><b>Returns</b> Renvoie un vecteur égale à la somme des vecteurs.</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(a,b)</code> : <div class="parameter-desc">
+<code>b</code> : second vecteur</div>
+<div class="parameter-desc">
+<code>a</code> : premier vecteur</div>
+</div>
+
+<pre><span id="VALvec2_add_scalar"><span class="keyword">val</span> vec2_add_scalar</span> : <code class="type"><a href="Camlbric.html#TYPEt_vec2">t_vec2</a> * int * int -&gt; t_vec2</code></pre><div class="info ">
+<div class="info-desc">
+<p>Cette fonction renvoie un vecteur égale à la somme d'un vecteur
+  donné en argument et un autre vecteur construit à partir de (x,y).</p>
+
+<p>Cette fonction est une optimisation du code suivant (que vous ne devez pas faire en l'état):</p>
+<pre class="codepre"><code class="code">let vec2_add_scalar(a,x,y : t_vec2 * int * int) : t_vec2 =
+  vec2_add(a, make_vec2(x,y))
+;;
+  </code></pre></div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Nicolas Itey, Olivier Lemaire</li>
+<li><b>Returns</b> Renvoie un vecteur qui est la résultante du vecteur</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(a,x,y)</code> : <div class="parameter-desc">
+<code>y</code> : composante en y du second vecteur</div>
+<div class="parameter-desc">
+<code>x</code> : composante en x du second vecteur</div>
+<div class="parameter-desc">
+<code>a</code> : premier vecteur</div>
+</div>
+
+<pre><span id="VALvec2_mult"><span class="keyword">val</span> vec2_mult</span> : <code class="type"><a href="Camlbric.html#TYPEt_vec2">t_vec2</a> * <a href="Camlbric.html#TYPEt_vec2">t_vec2</a> -&gt; t_vec2</code></pre><div class="info ">
+<div class="info-desc">
+<p>Cette fonction calcul un vecteur où 
+  ses composantes sont la résultante de la multiplication  des composantes de deux vecteurs en entrée.
+  Ainsi,</p>
+<pre class="codepre"><code class="code">    c_x = a_x * b_x
+    c_y = a_y * b_y
+    </code></pre></div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Nicolas Itey, Olivier Lemaire</li>
+<li><b>Returns</b> Renvoie un vecteur qui résulte de la multiplication des composantes.</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(a,b)</code> : <div class="parameter-desc">
+<code>b</code> : second vecteur</div>
+<div class="parameter-desc">
+<code>a</code> : premier vecteur</div>
+</div>
+
+<pre><span id="VALvec2_mult_scalar"><span class="keyword">val</span> vec2_mult_scalar</span> : <code class="type"><a href="Camlbric.html#TYPEt_vec2">t_vec2</a> * int * int -&gt; t_vec2</code></pre><div class="info ">
+<div class="info-desc">
+<p>Cette fonction calcul la multiplication des composantes du vecteur a et du vecteur construit à partir de (x,y).
+  Cette fonction est une optimisation du code suivant (que vous ne devez pas faire en l'état):</p>
+<pre class="codepre"><code class="code">let vec2_mult_scalar(a,x,y : t_vec2 * int * int) : t_vec2 =
+  vec2_mult(a, make_vec2(x,y))
+;;
+  </code></pre></div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Nicolas Itey, Olivier Lemaire</li>
+<li><b>Returns</b> Renvoie un vecteur</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(a,x,y)</code> : <div class="parameter-desc">
+<code>y</code> : ordonnée du second vecteur</div>
+<div class="parameter-desc">
+<code>x</code> : abscisse du second vecteur</div>
+<div class="parameter-desc">
+<code>a</code> : premier vecteur</div>
+</div>
+
+<pre><code><span id="TYPEt_bonus"><span class="keyword">type</span> <code class="type"></code>t_bonus</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_bonus.BONUS_ghost"><span class="constructor">BONUS_ghost</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_bonus.BONUS_snd_chance"><span class="constructor">BONUS_snd_chance</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_bonus.BONUS_NULL"><span class="constructor">BONUS_NULL</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_bonus.BONUS_croix"><span class="constructor">BONUS_croix</span></span></code></td>
+
+</tr></table>
+
+<div class="info ">
+<div class="info-desc">
+<p>Type réprésentant les différents bonus disponibles</p>
+</div>
+</div>
+
+
+<pre><code><span id="TYPEt_ball"><span class="keyword">type</span> <code class="type"></code>t_ball</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_ball.ball_position">ball_position</span>&nbsp;: <code class="type"><a href="Camlbric.html#TYPEt_vec2">t_vec2</a> Stdlib.ref</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<div class="info-desc">
+<p>position modifiable en (x,y) de la balle</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_ball.ball_velocity">ball_velocity</span>&nbsp;: <code class="type"><a href="Camlbric.html#TYPEt_vec2">t_vec2</a> Stdlib.ref</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<div class="info-desc">
+<p>vitesse modifiable de la balle en vecteur</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_ball.ball_color">ball_color</span>&nbsp;: <code class="type"><a href="Camlbric.html#TYPEt_camlbrick_color">t_camlbrick_color</a></code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<div class="info-desc">
+<p>couleur de la balle</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_ball.ball_size">ball_size</span>&nbsp;: <code class="type">int Stdlib.ref</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<div class="info-desc">
+<p>rayon de la balle</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_ball.bonus">bonus</span>&nbsp;: <code class="type"><a href="Camlbric.html#TYPEt_bonus">t_bonus</a> Stdlib.ref</code>;</code></td>
+
+</tr></table>
+<code>}</code>
+
+<div class="info ">
+<div class="info-desc">
+<p>Type qui représente une balle</p>
+
+<p>bonus utilise</p>
+</div>
+</div>
+
+
+<pre><code><span id="TYPEt_paddle"><span class="keyword">type</span> <code class="type"></code>t_paddle</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_paddle.paddle_height">paddle_height</span>&nbsp;: <code class="type">int</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<div class="info-desc">
+<p>hauteur du paddle</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_paddle.paddle_width">paddle_width</span>&nbsp;: <code class="type">int Stdlib.ref</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<div class="info-desc">
+<p>largeur du paddle modifiable</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_paddle.paddle_position">paddle_position</span>&nbsp;: <code class="type"><a href="Camlbric.html#TYPEt_vec2">t_vec2</a> Stdlib.ref</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<div class="info-desc">
+<p>position du paddle</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_paddle.color">color</span>&nbsp;: <code class="type"><a href="Camlbric.html#TYPEt_camlbrick_color">t_camlbrick_color</a></code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<div class="info-desc">
+<p>couleur du paddle</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr></table>
+<code>}</code>
+
+<div class="info ">
+<div class="info-desc">
+<p>Type qui représente un paddle</p>
+</div>
+</div>
+
+
+<pre><code><span id="TYPEt_camlbrick"><span class="keyword">type</span> <code class="type"></code>t_camlbrick</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_camlbrick.brick_grid">brick_grid</span>&nbsp;: <code class="type"><a href="Camlbric.html#TYPEt_brick_kind">t_brick_kind</a> array array</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<div class="info-desc">
+<p>matrice affichant la grille de brick</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_camlbrick.paddle">paddle</span>&nbsp;: <code class="type"><a href="Camlbric.html#TYPEt_paddle">t_paddle</a></code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<div class="info-desc">
+<p>déclaration du paddle dans le jeu</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_camlbrick.ball">ball</span>&nbsp;: <code class="type"><a href="Camlbric.html#TYPEt_ball">t_ball</a> list Stdlib.ref</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<div class="info-desc">
+<p>déclaration de toutes les balles dans jeu</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_camlbrick.game_speed">game_speed</span>&nbsp;: <code class="type">int Stdlib.ref</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<div class="info-desc">
+<p>vitesse du jeu</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_camlbrick.gameState">gameState</span>&nbsp;: <code class="type"><a href="Camlbric.html#TYPEt_gamestate">t_gamestate</a> Stdlib.ref</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<div class="info-desc">
+<p>état du jeu</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_camlbrick.brick_number">brick_number</span>&nbsp;: <code class="type">int Stdlib.ref</code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<div class="info-desc">
+<p>nombre de brick à détruire</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt_camlbrick.param">param</span>&nbsp;: <code class="type"><a href="Camlbric.html#TYPEt_camlbrick_param">t_camlbrick_param</a></code>;</code></td>
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+<div class="info-desc">
+<p>paramètres du jeu</p>
+</div>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
+</tr></table>
+<code>}</code>
+
+<div class="info ">
+<div class="info-desc">
+<p>Type qui représente le jeu</p>
+</div>
+</div>
+
+
+<pre><span id="VALmake_camlbrick_param"><span class="keyword">val</span> make_camlbrick_param</span> : <code class="type">unit -&gt; t_camlbrick_param</code></pre><div class="info ">
+<div class="info-desc">
+<p>Cette fonction construit le paramétrage du jeu, avec des informations personnalisable avec les contraintes du sujet.
+  Il n'y a aucune vérification et vous devez vous assurer que les valeurs données en argument soient cohérentes.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Returns</b> Renvoie un paramétrage de jeu par défaut</li>
+</ul>
+</div>
+
+<pre><span id="VALstart_onclick"><span class="keyword">val</span> start_onclick</span> : <code class="type">t_camlbrick -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Cette fonction est appelée par l'interface graphique lorsqu'on clique sur le bouton
+  de la zone de menu et que ce bouton affiche "Start".</p>
+
+<p>Vous pouvez réaliser des traitements spécifiques, mais comprenez bien que cela aura
+  un impact sur les performances si vous dosez mal les temps de calcul.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Antoine Goy</li>
+</ul>
+</div>
+
+<pre><span id="VALstop_onclick"><span class="keyword">val</span> stop_onclick</span> : <code class="type">t_camlbrick -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Cette fonction est appelée par l'interface graphique lorsqu'on clique sur le bouton
+  de la zone de menu et que ce bouton affiche "Stop".</p>
+
+<p>Vous pouvez réaliser des traitements spécifiques, mais comprenez bien que cela aura
+  un impact sur les performances si vous dosez mal les temps de calcul.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Antoine Goy</li>
+</ul>
+</div>
+
+<pre><span id="VALparam_get"><span class="keyword">val</span> param_get</span> : <code class="type">t_camlbrick -&gt; t_camlbrick_param</code></pre><div class="info ">
+<div class="info-desc">
+<p>Cette fonction extrait le paramétrage d'un jeu à partir du jeu donné en argument.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Nicolas Itey</li>
+<li><b>Returns</b> Renvoie le paramétrage actuel.</li>
+</ul>
+</div>
+
+<pre><span id="VALmake_paddle"><span class="keyword">val</span> make_paddle</span> : <code class="type">unit -&gt; t_paddle</code></pre><div class="info ">
+<div class="info-deprecated">
+<span class="warning">Deprecated. </span>Cette fonction est là juste pour le debug ou pour débuter certains traitements de test.</div>
+<div class="info-desc">
+<p>Cette fonction crée une raquette par défaut au milieu de l'écran et de taille normal.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Kamardine</li>
+<li><b>Returns</b> crée le paddle</li>
+</ul>
+</div>
+
+<pre><span id="VALmake_ball"><span class="keyword">val</span> make_ball</span> : <code class="type">int * int * int -&gt; t_ball</code></pre>
+<pre><span id="VALstring_of_gamestate"><span class="keyword">val</span> string_of_gamestate</span> : <code class="type">t_camlbrick -&gt; string</code></pre><div class="info ">
+<div class="info-desc">
+<p>Fonction utilitaire qui permet de traduire l'état du jeu sous la forme d'une chaîne de caractère.
+  Cette fonction est appelée à chaque frame, et est affichée directement dans l'interface graphique.</p>
+
+<p>Vous devez modifier cette fonction.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Antoine Goy</li>
+<li><b>Returns</b> Renvoie la chaîne de caractère représentant l'état du jeu.</li>
+</ul>
+</div>
+
+<pre><span id="VALbrick_get"><span class="keyword">val</span> brick_get</span> : <code class="type"><a href="Camlbric.html#TYPEt_camlbrick">t_camlbrick</a> * int * int -&gt; t_brick_kind</code></pre><div class="info ">
+<div class="info-desc">
+<p>renvoie le type de brique de la grille de brique du jeux</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Olivier Lemaire</li>
+<li><b>Returns</b> renvoie le type de brique en position i j</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(game,i,j)</code> : <div class="parameter-desc">
+<code>j</code> : la position x de la brique</div>
+<div class="parameter-desc">
+<code>i</code> : la position y de la brique</div>
+<div class="parameter-desc">
+<code>game</code> : le jeux</div>
+</div>
+
+<pre><span id="VALbrick_hit"><span class="keyword">val</span> brick_hit</span> : <code class="type"><a href="Camlbric.html#TYPEt_camlbrick">t_camlbrick</a> * int * int -&gt; t_brick_kind</code></pre><div class="info ">
+<div class="info-desc">
+<p>renvoie en quoi ce transforme une brique une fois touché</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Olivier Lemaire</li>
+<li><b>Returns</b> la brique après qu'elle a été touché</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(game,i,j)</code> : <div class="parameter-desc">
+<code>j</code> : la position en x de la brique touché</div>
+<div class="parameter-desc">
+<code>i</code> : la position en y de la brique touché</div>
+<div class="parameter-desc">
+<code>game</code> : le jeux</div>
+</div>
+
+<pre><span id="VALbrick_color"><span class="keyword">val</span> brick_color</span> : <code class="type"><a href="Camlbric.html#TYPEt_camlbrick">t_camlbrick</a> * int * int -&gt; t_camlbrick_color</code></pre><div class="info ">
+<div class="info-desc">
+<p>renvoie la couleur d'une brique</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Olivier lemaire</li>
+<li><b>Returns</b> renvoie la couleur de la brique</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(game,i,j)</code> : <div class="parameter-desc">
+<code>j</code> : la position en x de la brique</div>
+<div class="parameter-desc">
+<code>i</code> : la position en y de la brique</div>
+<div class="parameter-desc">
+<code>game</code> : le jeu</div>
+</div>
+
+<pre><span id="VALpaddle_x"><span class="keyword">val</span> paddle_x</span> : <code class="type">t_camlbrick -&gt; int</code></pre><div class="info ">
+<div class="info-desc">
+<p>Fonction qui donne la position en x du paddle</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Nicolas, Antoine</li>
+<li><b>Returns</b> position en x</li>
+</ul>
+</div>
+
+<pre><span id="VALpaddle_size_pixel"><span class="keyword">val</span> paddle_size_pixel</span> : <code class="type">t_camlbrick -&gt; int</code></pre><div class="info ">
+<div class="info-desc">
+<p>Fonction qui donne la largeur du paddle</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Nicolas, Antoine</li>
+<li><b>Returns</b> largeur du paddle</li>
+</ul>
+</div>
+
+<pre><span id="VALpaddle_move_left"><span class="keyword">val</span> paddle_move_left</span> : <code class="type">t_camlbrick -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Fonction qui decale le paddle vers la gauche</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Antoine</li>
+</ul>
+</div>
+
+<pre><span id="VALpaddle_move_right"><span class="keyword">val</span> paddle_move_right</span> : <code class="type">t_camlbrick -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Fonction qui decale le paddle vers la droite</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Antoine</li>
+</ul>
+</div>
+
+<pre><span id="VALhas_ball"><span class="keyword">val</span> has_ball</span> : <code class="type">t_camlbrick -&gt; bool</code></pre><div class="info ">
+<div class="info-desc">
+<p>Fonction qui indique si la partie en cours contient au moins une balle</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Antoine</li>
+<li><b>Returns</b> vrai si on a une balle dans le jeu , faux sinon</li>
+</ul>
+</div>
+
+<pre><span id="VALballs_count"><span class="keyword">val</span> balls_count</span> : <code class="type">t_camlbrick -&gt; int</code></pre><div class="info ">
+<div class="info-desc">
+<p>Fonction qui donne le nombre de balles</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Kamardine</li>
+<li><b>Returns</b> nombre de balles dans le jeu</li>
+</ul>
+</div>
+
+<pre><span id="VALballs_get"><span class="keyword">val</span> balls_get</span> : <code class="type">t_camlbrick -&gt; <a href="Camlbric.html#TYPEt_ball">t_ball</a> list</code></pre><div class="info ">
+<div class="info-desc">
+<p>Fonction qui recupere toutes les balles d'une partie</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Kamardine</li>
+<li><b>Returns</b> liste de balle</li>
+</ul>
+</div>
+
+<pre><span id="VALball_get"><span class="keyword">val</span> ball_get</span> : <code class="type"><a href="Camlbric.html#TYPEt_camlbrick">t_camlbrick</a> * int -&gt; t_ball</code></pre><div class="info ">
+<div class="info-desc">
+<p>Fonction qui recupere la ieme balle d'une partie</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Kamardine</li>
+<li><b>Returns</b> une balle à la position i</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(game,i)</code> : <div class="parameter-desc">
+<code>i</code> : position i</div>
+<div class="parameter-desc">
+<code>game</code> : le jeu</div>
+</div>
+
+<pre><span id="VALball_x"><span class="keyword">val</span> ball_x</span> : <code class="type"><a href="Camlbric.html#TYPEt_camlbrick">t_camlbrick</a> * <a href="Camlbric.html#TYPEt_ball">t_ball</a> -&gt; int</code></pre><div class="info ">
+<div class="info-desc">
+<p>Fonction qui renvoie l'abscisse au centre d'une balle</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Kamardine</li>
+<li><b>Returns</b> abscisse x au centre d'une balle</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(game,ball)</code> : <div class="parameter-desc">
+<code>ball</code> : la balle</div>
+<div class="parameter-desc">
+<code>game</code> : le jeu</div>
+</div>
+
+<pre><span id="VALball_y"><span class="keyword">val</span> ball_y</span> : <code class="type"><a href="Camlbric.html#TYPEt_camlbrick">t_camlbrick</a> * <a href="Camlbric.html#TYPEt_ball">t_ball</a> -&gt; int</code></pre><div class="info ">
+<div class="info-desc">
+<p>Fonction qui renvoie l'ordonnée au centre d'une balle</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Kamardine</li>
+<li><b>Returns</b> ordonnée y au centre d'une balle</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(game,ball)</code> : <div class="parameter-desc">
+<code>ball</code> : la balle</div>
+<div class="parameter-desc">
+<code>game</code> : le jeu</div>
+</div>
+
+<pre><span id="VALball_size_pixel"><span class="keyword">val</span> ball_size_pixel</span> : <code class="type"><a href="Camlbric.html#TYPEt_camlbrick">t_camlbrick</a> * <a href="Camlbric.html#TYPEt_ball">t_ball</a> -&gt; int</code></pre><div class="info ">
+<div class="info-desc">
+<p>Fonction qui renvoie le diametre du cercle representant la balle en fonction de sa taille</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Kamardine</li>
+<li><b>Returns</b> diametre de la balle</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(game,ball)</code> : <div class="parameter-desc">
+<code>ball</code> : la balle</div>
+<div class="parameter-desc">
+<code>game</code> : le jeu</div>
+</div>
+
+<pre><span id="VALball_color"><span class="keyword">val</span> ball_color</span> : <code class="type"><a href="Camlbric.html#TYPEt_camlbrick">t_camlbrick</a> * <a href="Camlbric.html#TYPEt_ball">t_ball</a> -&gt; t_camlbrick_color</code></pre><div class="info ">
+<div class="info-desc">
+<p>Fonction qui donne la couleur d'une balle</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Kamardine</li>
+<li><b>Returns</b> couleur de la balle</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(game,ball)</code> : <div class="parameter-desc">
+<code>ball</code> : la balle</div>
+<div class="parameter-desc">
+<code>game</code> : le jeu</div>
+</div>
+
+<pre><span id="VALis_inside_circle"><span class="keyword">val</span> is_inside_circle</span> : <code class="type">int * int * int * int * int -&gt; bool</code></pre><div class="info ">
+<div class="info-desc">
+<p>Fonction qui détecte si un point (x,y) se trouve à l'intérieur d'un cercle</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Antoine, Kamardine</li>
+<li><b>Returns</b> true</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(cx,cy,rad,x,y)</code> : <div class="parameter-desc">
+<code>y</code> : Ordonée du point a verifier</div>
+<div class="parameter-desc">
+<code>x</code> : Abscisse du point a verifier</div>
+<div class="parameter-desc">
+<code>rad</code> : rayon du cercle</div>
+<div class="parameter-desc">
+<code>cy</code> : Abscisse du centre du cercle</div>
+</div>
+
+<pre><span id="VALis_inside_quad"><span class="keyword">val</span> is_inside_quad</span> : <code class="type">int * int * int * int * int * int -&gt; bool</code></pre><div class="info ">
+<div class="info-desc">
+<p>Fonction qui détecte si un point (x,y) se trouve à l'intérieur d'un rectangle formé  avec comme origine l'angle supérieur gauche de l'ecran</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Kamardine</li>
+<li><b>Returns</b> true</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(x1,y1,x2,y2,x,y)</code> : <div class="parameter-desc">
+<code>y</code> : Ordonée du point a verifier</div>
+<div class="parameter-desc">
+<code>x</code> : Abscisse du point a verifier</div>
+<div class="parameter-desc">
+<code>y2</code> : Ordonée du coin superieur droit du rectangle</div>
+<div class="parameter-desc">
+<code>x2</code> : Abscisse du coin superieur droit du rectangle</div>
+<div class="parameter-desc">
+<code>y1</code> : Ordonnée du coin inferieur gauche du rectangle</div>
+<div class="parameter-desc">
+<code>x1</code> : Abscisse du coin inferieur gauche du rectangle</div>
+</div>
+
+<pre><span id="VALball_remove_out_of_border"><span class="keyword">val</span> ball_remove_out_of_border</span> : <code class="type"><a href="Camlbric.html#TYPEt_camlbrick">t_camlbrick</a> * <a href="Camlbric.html#TYPEt_ball">t_ball</a> list -&gt; <a href="Camlbric.html#TYPEt_ball">t_ball</a> list</code></pre><div class="info ">
+<div class="info-desc">
+<p>Fonction qui retire une balle dépassant la bordure inférieur</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Olivier</li>
+<li><b>Returns</b> Une liste de ball avec la balle dans les limites du jeu</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(game,balls)</code> : <div class="parameter-desc">
+<code>balls</code> : liste de balle disponible dans le jeu</div>
+<div class="parameter-desc">
+<code>game</code> : le jeu</div>
+</div>
+
+<pre><span id="VALball_hit_paddle"><span class="keyword">val</span> ball_hit_paddle</span> : <code class="type"><a href="Camlbric.html#TYPEt_camlbrick">t_camlbrick</a> * <a href="Camlbric.html#TYPEt_ball">t_ball</a> * <a href="Camlbric.html#TYPEt_paddle">t_paddle</a> -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Fonction qui change la direction de la balle quand elle tape le paddle</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Olivier Lemaire, Antoine Goy</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(game,ball,paddle)</code> : <div class="parameter-desc">
+<code>paddle</code> : le paddle</div>
+<div class="parameter-desc">
+<code>ball</code> : la balle</div>
+<div class="parameter-desc">
+<code>game</code> : le jeu</div>
+</div>
+
+<pre><span id="VALball_croix"><span class="keyword">val</span> ball_croix</span> : <code class="type"><a href="Camlbric.html#TYPEt_camlbrick">t_camlbrick</a> * <a href="Camlbric.html#TYPEt_ball">t_ball</a> * int * int -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>casse les brique de la ligne et colonne de la brique bonus touchée</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Nicolas Itey, Olivier Lemaire, Kamardine Mirghane Mohamed, Antoine Goy</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(game,ball,bonus_brick_x,bonus_brick_y)</code> : <div class="parameter-desc">
+<code>bonus_brick_y</code> : coordonnée en ordonnée de la brique touchée</div>
+<div class="parameter-desc">
+<code>bonus_brick_x</code> : coordonnée en abscice de la brique touchée</div>
+<div class="parameter-desc">
+<code>ball</code> : la balle</div>
+<div class="parameter-desc">
+<code>game</code> : le jeu</div>
+</div>
+
+<pre><span id="VALball_hit_bonus"><span class="keyword">val</span> ball_hit_bonus</span> : <code class="type"><a href="Camlbric.html#TYPEt_camlbrick">t_camlbrick</a> * <a href="Camlbric.html#TYPEt_ball">t_ball</a> * int * int -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Attribue un bonus si une brique bonus est touchée</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Nicolas Itey, Olivier Lemaire, Kamardine Mirghane Mohamed, Antoine Goy</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(game,ball,i,j)</code> : <div class="parameter-desc">
+<code>j</code> : coordonnée en ordonnée de la brique touchée</div>
+<div class="parameter-desc">
+<code>i</code> : coordonnée en abscice de la brique touchée</div>
+<div class="parameter-desc">
+<code>ball</code> : la balle</div>
+<div class="parameter-desc">
+<code>game</code> : le jeu</div>
+</div>
+
+<pre><span id="VALball_hit_side_brick"><span class="keyword">val</span> ball_hit_side_brick</span> : <code class="type"><a href="Camlbric.html#TYPEt_camlbrick">t_camlbrick</a> * <a href="Camlbric.html#TYPEt_ball">t_ball</a> * int * int -&gt; bool</code></pre><div class="info ">
+<div class="info-desc">
+<p>Détecte une collision entre la balle et le côté d'une brique</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Olivier Lemaire, Antoine Goy</li>
+<li><b>Returns</b> true si la balle touche le côté d'une brique</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(game,ball,i,j)</code> : <div class="parameter-desc">
+<code>j</code> : index de la ligne dans la matrice</div>
+<div class="parameter-desc">
+<code>i</code> : index de la colonne dans la matrice</div>
+<div class="parameter-desc">
+<code>ball</code> : la ball</div>
+<div class="parameter-desc">
+<code>game</code> : le jeu</div>
+</div>
+
+<pre><span id="VALreset_ball_onclick"><span class="keyword">val</span> reset_ball_onclick</span> : <code class="type">t_camlbrick -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Fonction qui reset la balle au millieu de l'ecran</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Kamardine</li>
+<li><b>Returns</b> remet la balle à l'écran</li>
+</ul>
+</div>
+
+<pre><span id="VALball_hit_wall"><span class="keyword">val</span> ball_hit_wall</span> : <code class="type"><a href="Camlbric.html#TYPEt_camlbrick">t_camlbrick</a> * <a href="Camlbric.html#TYPEt_ball">t_ball</a> -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Fonction qui modifie la trajectoire de la balle quand elle touche un mur</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Olivier Lemaire, Antoine Goy</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(game,ball)</code> : <div class="parameter-desc">
+<code>ball</code> : la balle</div>
+<div class="parameter-desc">
+<code>game</code> : le jeu</div>
+</div>
+
+<pre><span id="VALgame_test_hit_balls"><span class="keyword">val</span> game_test_hit_balls</span> : <code class="type"><a href="Camlbric.html#TYPEt_camlbrick">t_camlbrick</a> * <a href="Camlbric.html#TYPEt_ball">t_ball</a> list -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Fonction qui gère toutes les collisions du jeu</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Olivier Lemaire, Antoine Goy</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(game,balls)</code> : <div class="parameter-desc">
+<code>balls</code> : la liste des balles disponible dans le jeu</div>
+<div class="parameter-desc">
+<code>game</code> : le jeu</div>
+</div>
+
+<pre><span id="VALcanvas_mouse_move"><span class="keyword">val</span> canvas_mouse_move</span> : <code class="type"><a href="Camlbric.html#TYPEt_camlbrick">t_camlbrick</a> * int * int -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Cette fonction est appelée par l'interface graphique avec le jeu en argument et la position
+  de la souris dans la fenêtre lorsqu'elle se déplace. 
+  Vous pouvez réaliser des traitements spécifiques, mais comprenez bien que cela aura
+  un impact sur les performances si vous dosez mal les temps de calcul.</p>
+</div>
+</div>
+<div class="param_info"><code class="code">(game,x,y)</code> : <div class="parameter-desc">
+<code>y</code> : l'ordonnée de la position de la souris</div>
+<div class="parameter-desc">
+<code>x</code> : l'abscisse de la position de la souris</div>
+<div class="parameter-desc">
+<code>game</code> : la partie en cours.</div>
+</div>
+
+<pre><span id="VALcanvas_mouse_click_press"><span class="keyword">val</span> canvas_mouse_click_press</span> : <code class="type"><a href="Camlbric.html#TYPEt_camlbrick">t_camlbrick</a> * int * int * int -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Cette fonction est appelée par l'interface graphique avec le jeu en argument et la position
+  de la souris dans la fenêtre lorsqu'un bouton est enfoncé. 
+  Vous pouvez réaliser des traitements spécifiques, mais comprenez bien que cela aura
+  un impact sur les performances si vous dosez mal les temps de calcul.</p>
+</div>
+</div>
+<div class="param_info"><code class="code">(game,button,x,y)</code> : <div class="parameter-desc">
+<code>y</code> : l'ordonnée de la position de la souris</div>
+<div class="parameter-desc">
+<code>x</code> : l'abscisse de la position de la souris</div>
+<div class="parameter-desc">
+<code>button</code> : numero du bouton de la souris enfoncé.</div>
+<div class="parameter-desc">
+<code>game</code> : la partie en cours.</div>
+</div>
+
+<pre><span id="VALcanvas_mouse_click_release"><span class="keyword">val</span> canvas_mouse_click_release</span> : <code class="type"><a href="Camlbric.html#TYPEt_camlbrick">t_camlbrick</a> * int * int * int -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Cette fonction est appelée par l'interface graphique avec le jeu en argument et la position
+  de la souris dans la fenêtre lorsqu'un bouton est relaché. 
+  Vous pouvez réaliser des traitements spécifiques, mais comprenez bien que cela aura
+  un impact sur les performances si vous dosez mal les temps de calcul.</p>
+</div>
+</div>
+<div class="param_info"><code class="code">(game,button,x,y)</code> : <div class="parameter-desc">
+<code>y</code> : l'ordonnée de la position du relachement</div>
+<div class="parameter-desc">
+<code>x</code> : l'abscisse de la position du relachement</div>
+<div class="parameter-desc">
+<code>button</code> : numero du bouton de la souris relaché.</div>
+<div class="parameter-desc">
+<code>game</code> : la partie en cours.</div>
+</div>
+
+<pre><span id="VALcanvas_keypressed"><span class="keyword">val</span> canvas_keypressed</span> : <code class="type"><a href="Camlbric.html#TYPEt_camlbrick">t_camlbrick</a> * string * int -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Cette fonction est appelée par l'interface graphique lorsqu'une touche du clavier est appuyée.
+  Les arguments sont le jeu en cours, la touche enfoncé sous la forme d'une chaine et sous forme d'un code
+  spécifique à labltk.</p>
+
+<p>Le code fourni initialement permet juste d'afficher les touches appuyées au clavier afin de pouvoir
+  les identifiées facilement dans nos traitements.</p>
+
+<p>Vous pouvez réaliser des traitements spécifiques, mais comprenez bien que cela aura
+  un impact sur les performances si vous dosez mal les temps de calcul.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Olivier Lemaire</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(game,keyString,keyCode)</code> : <div class="parameter-desc">
+<code>keyCode</code> : code entier de la touche appuyée.</div>
+<div class="parameter-desc">
+<code>keyString</code> : nom de la touche appuyée.</div>
+<div class="parameter-desc">
+<code>game</code> : la partie en cours.</div>
+</div>
+
+<pre><span id="VALcanvas_keyreleased"><span class="keyword">val</span> canvas_keyreleased</span> : <code class="type"><a href="Camlbric.html#TYPEt_camlbrick">t_camlbrick</a> * string * int -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Cette fonction est appelée par l'interface graphique lorsqu'une touche du clavier est relachée.
+  Les arguments sont le jeu en cours, la touche relachée sous la forme d'une chaine et sous forme d'un code
+  spécifique à labltk.</p>
+
+<p>Le code fourni initialement permet juste d'afficher les touches appuyées au clavier afin de pouvoir
+  les identifiées facilement dans nos traitements.</p>
+
+<p>Vous pouvez réaliser des traitements spécifiques, mais comprenez bien que cela aura
+  un impact sur les performances si vous dosez mal les temps de calcul.</p>
+</div>
+</div>
+<div class="param_info"><code class="code">(game,keyString,keyCode)</code> : <div class="parameter-desc">
+<code>keyCode</code> : code entier de la touche relachée.</div>
+<div class="parameter-desc">
+<code>keyString</code> : nom de la touche relachée.</div>
+<div class="parameter-desc">
+<code>game</code> : la partie en cours.</div>
+</div>
+
+<pre><span id="VALreset_ball_onclick"><span class="keyword">val</span> reset_ball_onclick</span> : <code class="type">t_camlbrick -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Fonction qui reset la balle au millieu de l'ecran</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Kamardine</li>
+<li><b>Returns</b> remet la balle à l'écran</li>
+</ul>
+</div>
+
+<pre><span id="VALcustom1_text"><span class="keyword">val</span> custom1_text</span> : <code class="type">t_camlbrick -&gt; string</code></pre><div class="info ">
+<div class="info-desc">
+<p>Cette fonction est utilisée par l'interface graphique pour connaitre l'information
+  l'information à afficher dans la zone Custom1 de la zone du menu.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Olivier Lemaire</li>
+<li><b>Returns</b> Nombre de briques restantes</li>
+</ul>
+</div>
+
+<pre><span id="VALcustom2_text"><span class="keyword">val</span> custom2_text</span> : <code class="type">t_camlbrick -&gt; string</code></pre><div class="info ">
+<div class="info-desc">
+<p>Cette fonction est utilisée par l'interface graphique pour connaitre l'information
+  l'information à afficher dans la zone Custom2 de la zone du menu.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Kamardine</li>
+<li><b>Returns</b> Permet d'indiquer d'ajouter une balle</li>
+</ul>
+</div>
+
+<pre><span id="VALmake_camlbrick"><span class="keyword">val</span> make_camlbrick</span> : <code class="type">unit -&gt; t_camlbrick</code></pre><div class="info ">
+<div class="info-desc">
+<p>Cette fonction crée une nouvelle structure qui initialise le monde avec aucune brique visible.
+  Une raquette par défaut et une balle par défaut dans la zone libre.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Olivier Lemaire</li>
+<li><b>Returns</b> Renvoie un jeu correctement initialisé</li>
+</ul>
+</div>
+
+<pre><span id="VALspeed_get"><span class="keyword">val</span> speed_get</span> : <code class="type">t_camlbrick -&gt; int</code></pre><div class="info ">
+<div class="info-desc">
+<p>Cette fonction est appelée par l'interface graphique pour connaitre la valeur
+  du slider Speed dans la zone du menu.</p>
+
+<p>Vous pouvez donc renvoyer une valeur selon votre désir afin d'offrir la possibilité
+  d'interagir avec le joueur.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Olivier Lemaire</li>
+<li><b>Returns</b> vitesse du jeu</li>
+</ul>
+</div>
+
+<pre><span id="VALspeed_change"><span class="keyword">val</span> speed_change</span> : <code class="type"><a href="Camlbric.html#TYPEt_camlbrick">t_camlbrick</a> * int -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Cette fonction est appelée par l'interface graphique pour indiquer que le 
+  slide Speed dans la zone de menu a été modifiée.</p>
+
+<p>Ainsi, vous pourrez réagir selon le joueur.</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Oliver Lemaire</li>
+</ul>
+</div>
+<div class="param_info"><code class="code">(game,xspeed)</code> : <div class="parameter-desc">
+<code>xspeed</code> : la vitesse du jeu</div>
+<div class="parameter-desc">
+<code>game</code> : le jeu</div>
+</div>
+
+<pre><span id="VALanimate_action"><span class="keyword">val</span> animate_action</span> : <code class="type">t_camlbrick -&gt; unit</code></pre><div class="info ">
+<div class="info-desc">
+<p>Fonction qui appelle toutes les fonction nécessaire au déroulement d'une partie à chaques frames</p>
+</div>
+<ul class="info-attributes">
+<li><b>Author(s):</b> Olivier Lemaire, Antoine Goy</li>
+</ul>
+</div>
+</body></html>

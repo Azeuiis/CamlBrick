@@ -1,15 +1,16 @@
-(*#directory "+labltk";;
+(* #directory "+labltk";;
 #load "labltk.cma";;
 
-#mod_use "camlbrick.ml";;
-*)
+#use "camlbrick.ml";; *)
+
 (* https://who.rocq.inria.fr/Francois.Thomasset/Labltk/Tutoriel_FT/ *)
 
+(* Module permettant l'interface graphique du jeu *)
 
+open Camlbrick
 open Tk
 open Printf
 
-open Camlbrick;;
 
 type t_camlbrick_gui = {
   top : Widget.toplevel Widget.widget;
@@ -23,6 +24,7 @@ type t_camlbrick_gui = {
   mutable tktimer : Timer.t option;
 
   lv_gamestate : Textvariable.textVariable;
+  lv_reset_ball : Textvariable.textVariable;
 
   (* l_custom1 : Widget.label Widget.widget;
   l_custom2 : Widget.label Widget.widget; *)
@@ -123,9 +125,9 @@ let rec cbg_animate_action param game cbgui () =
   Scale.set (cbgui.sc_speed) (float_of_int (speed_get(game)));
   let state = (string_of_gamestate(game)) in
   Textvariable.set (cbgui.lv_gamestate) state;
-  let text1 = custom1_text() in 
+  let text1 = custom1_text(game) in 
   Textvariable.set (cbgui.lb_custom1) text1;
-  let text2 = custom2_text() in
+  let text2 = custom2_text(game) in
   Textvariable.set (cbgui.lb_custom2) text2;
   (* on dessine les briques *)
   for i=0 to Array.length(cbgui.world_gui) - 1
@@ -207,6 +209,7 @@ let make_camlbrick_gui(param,game : t_camlbrick_param *t_camlbrick) :  t_camlbri
   let f_menu = Frame.create top in
   let lbl_gamestate= Label.create ~text:"Gamestate:" f_menu in
   let lv_gamestate = Textvariable.create ()  in
+  let lv_reset_ball = Textvariable.create () in
   let tv_custom1 = Textvariable.create() in
   let tv_custom2 = Textvariable.create() in
   let lb_custom1 = Label.create ~textvariable:tv_custom1 f_menu in
@@ -215,22 +218,27 @@ let make_camlbrick_gui(param,game : t_camlbrick_param *t_camlbrick) :  t_camlbri
   let l_custom2 = Label.create ~text:"Custom2:" f_menu in
   
   let bv_startstop = Textvariable.create () in
+  let bv_reset_ball= Textvariable.create () in
   let lb_gamestate = Label.create ~textvariable:lv_gamestate f_menu  in
   let b_hof = Button.create ~text:"Highscores"  f_menu in
   let b_startstop = Button.create ~textvariable:bv_startstop  f_menu in
+  let b_reset_ball = Button.create ~textvariable:bv_reset_ball f_menu in
   let f_option = Frame.create ~relief:`Groove ~borderwidth:2 f_menu in
   let l_option = Label.create ~text:"Options:" f_option in
   (* let mylist = Listbox.create ~selectmode:`Single f_option in  *)
-  let sc_speed = Scale.create ~min:5. ~max:100. ~resolution:5. ~tickinterval:50. ~label:"Speed:" ~orient:`Horizontal f_option in
+  let sc_speed = Scale.create ~min:5. ~max:50. ~resolution:5. ~tickinterval:50. ~label:"Speed:" ~orient:`Horizontal f_option in
   Scale.set sc_speed (float_of_int (speed_get(game)));
   Textvariable.set lv_gamestate "Game Over";
   Textvariable.set bv_startstop "Start";
+  Textvariable.set bv_reset_ball "Reset ball";
   
   pack  [coe l_option];
   pack ~fill:`X [ coe sc_speed];
   pack [coe canvas] ;
-  pack [coe f_option; coe b_startstop; coe lbl_gamestate; coe lb_gamestate; coe l_custom1;coe lb_custom1; coe l_custom2; coe lb_custom2] ~side:`Top;
+  pack [coe f_option; coe b_startstop; coe lbl_gamestate; coe lb_gamestate; coe l_custom1;coe lb_custom1; coe l_custom2; coe lb_custom2 ; coe b_reset_ball] ~side:`Top;
   pack [coe f_game; coe f_menu] ~side:`Left;
+
+  let cbg_b_reset_ball_onclick game () : unit = reset_ball_onclick(game) in
 
   let cbg_b_startstop_onclick game () : unit=
     if (Textvariable.get bv_startstop) = "Start"
@@ -245,6 +253,7 @@ let make_camlbrick_gui(param,game : t_camlbrick_param *t_camlbrick) :  t_camlbri
   in 
   Button.configure ~command:(cbg_b_hof_onclick game) b_hof;
   Button.configure ~command:(cbg_b_startstop_onclick game) b_startstop;
+  Button.configure ~command:(cbg_b_reset_ball_onclick game) b_reset_ball;
   Scale.configure ~command:(cbg_speed_change game) sc_speed;
   bind ~action:(cbg_canvas_key_press game) ~fields:[`KeySymString ; `KeySymInt] ~events:[`KeyPress] top;
   bind ~action:(cbg_canvas_key_release game) ~fields:[`KeySymString ; `KeySymInt] ~events:[`KeyRelease] top;
@@ -263,6 +272,7 @@ let make_camlbrick_gui(param,game : t_camlbrick_param *t_camlbrick) :  t_camlbri
     tktimer = None;
 
     lv_gamestate = lv_gamestate;
+    lv_reset_ball = lv_reset_ball;
 
     (* l_custom1 = l_custom1;
     l_custom2 = l_custom2; *)
@@ -279,5 +289,3 @@ let launch_camlbrick(param, game) =
 ;;
 
 (* let _ = Printexc.print mainLoop ();; *)
-
-
