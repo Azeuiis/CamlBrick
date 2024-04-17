@@ -3,15 +3,15 @@ Camlbrick est un jeu de mot entre casse-briques et ocaml.
 
 Ce fichier contient les détails et instructions concernant le camlbrick
 
-Noms & prenoms des développeurs :
-	Goy Antoine
-	Itey Nicolas
-	Lemaire Olivier
-	Mirghane Mohamed Kamardine
+Noms & prenoms des principaux développeurs :
+	Goy Antoine,
+	Itey Nicolas,
+	Lemaire Olivier,
+	et Mirghane Mohamed Kamardine
 
-==================
-Infos sur le jeu :
-==================
+
+Information sur le jeu :
+========================
 
 Les touches de deplacements sont les fleches directionnelles : droite et gauche.
 
