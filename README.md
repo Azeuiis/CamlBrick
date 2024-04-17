@@ -21,3 +21,7 @@ Les differentes bonus sont :
     Ghost : Traverse les briques et les detruit en meme temps , le bonus s'annule quand la balle touche le paddle.
 
 Les briques vertes correspondent au bonus, grises aux indestructibles, rouges au doubles ( necessitent de se faire toucher 2 fois) et bleues aux simples.
+
+Pour lancer le jeu, il faudra ouvrir le repertoire dans un Visual Studio Code, aller dans le terminal et taper : ```ocamlrun camlbrick.exe```
+
+Bien-sur, ocaml devra être installer sur votre machine.
